@@ -33,6 +33,14 @@ public class EscalaTrabalho implements Serializable {
 		this.dia = dia;
 		this.mes = mes;
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "EscalaTrabalho" + "letra=" + letra + ", turno=" + turno + ", dia=" + dia + ", mes=" + mes
+				+ "]";
+	}
 
 	public String getLetra() {
 		return letra;

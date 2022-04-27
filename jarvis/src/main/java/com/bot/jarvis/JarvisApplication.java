@@ -8,9 +8,6 @@ public class JarvisApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(JarvisApplication.class, args);
-		
-		
-
 
 	}
 

@@ -1,13 +1,10 @@
 package com.bot.jarvis.launch;
 
-import java.util.List;
-
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import com.bot.jarvis.entities.EscalaTrabalho;
 import com.bot.jarvis.services.EscalaService;
 
 public class JarvisBot extends TelegramLongPollingBot {
@@ -15,7 +12,6 @@ public class JarvisBot extends TelegramLongPollingBot {
 	private EscalaService service;
 
 	public JarvisBot(EscalaService service) {
-
 		this.service = service;
 	}
 
@@ -50,12 +46,13 @@ public class JarvisBot extends TelegramLongPollingBot {
 		var resposta = "";
 
 		if ("data".equals(textoMensagem)) {
-			resposta = "	retorna a data";
+			resposta = "retorna a data";
 		}
 
-		else if (textoMensagem.startsWith("turno atual")) {
-			List<EscalaTrabalho> list = service.findAll();
-			resposta = list.get(1).getLetra();
+		else if (textoMensagem.startsWith("proximo turno")) {
+			String result = service.decodificaLetra(service.findAll().get(0).getLetra());
+			resposta = result;
+
 		}
 
 		else {
